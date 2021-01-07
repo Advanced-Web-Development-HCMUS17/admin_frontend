@@ -67,7 +67,8 @@ export function AuthProvider({children}) {
       setToken: setToken,
       setUserInfo: setUserInfo,
       login: login,
-      logout: logout
+      logout: logout,
+      isAuth: isAuth
     }}>{children}</Provider>)
 }
 

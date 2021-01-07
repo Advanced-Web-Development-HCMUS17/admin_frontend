@@ -1,3 +1,4 @@
+import React from "react";
 import IndexComponent from "./component";
 import {AuthProvider} from './component/useAuth';
 

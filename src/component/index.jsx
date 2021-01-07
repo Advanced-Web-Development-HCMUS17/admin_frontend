@@ -2,28 +2,27 @@ import React from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 
 import Login from "./userAuthentication/LoginPage";
-import Home from "./userAuthentication/HomePage";
 import {useAuth} from "./useAuth";
+import HomePage from "./userAuthentication/HomePage";
+import UserInfo from "./userInfo/UserInfo";
 
 export default function IndexComponent({props}) {
 
-  const {userInfo} = useAuth();
+  const {isAuth} = useAuth();
   return (
     <Switch>
-
       <Route exact path="/login">
         {
-          !userInfo || JSON.stringify(userInfo) === '{}' ?
+          !isAuth ?
             <Login/> :
             <Redirect to="/"/>
         }
       </Route>
-
-      <Route exact path="/">
+      <Route path="/">
         {
-          !userInfo || JSON.stringify(userInfo) === '{}' ?
+          !isAuth ?
             <Redirect to="/login"/> :
-            <Home userInfo={userInfo}/>
+            <HomePage/>
         }
       </Route>
     </Switch>
