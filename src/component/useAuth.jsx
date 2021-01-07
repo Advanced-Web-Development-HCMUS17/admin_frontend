@@ -27,7 +27,7 @@ const {Provider} = AuthContext;
 export function AuthProvider({children}) {
   const [token, setToken] = useState('');
   const [userInfo, setUserInfo] = useState('');
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(null);
 
   async function fetchUserInfo(token) {
     const userInfo = await AccountServices.getUserInfo(token);
@@ -38,6 +38,7 @@ export function AuthProvider({children}) {
     } else {
       setToken(null);
       setUserInfo(null);
+      setIsAuth(false);
     }
   }
 
