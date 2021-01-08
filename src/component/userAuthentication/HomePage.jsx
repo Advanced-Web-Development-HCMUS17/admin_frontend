@@ -25,6 +25,7 @@ import ListItem from "@material-ui/core/ListItem";
 import UserInfo from "../userInfo/UserInfo";
 import GameList from "../games/GamesList";
 import GameInfo from "../games/GameInfo";
+import {AccountBoxOutlined, GamepadOutlined} from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -157,10 +158,10 @@ export default function HomePage() {
         <Divider/>
         <List>
           <ListItem>
-            <NavLink to={"/"}>User</NavLink>
+            <NavLink to={"/"}><AccountBoxOutlined/>User</NavLink>
           </ListItem>
           <ListItem>
-            <NavLink to={"/game"}>Games</NavLink>
+            <NavLink to={"/game"}><GamepadOutlined/>Games</NavLink>
           </ListItem>
         </List>
       </Drawer>

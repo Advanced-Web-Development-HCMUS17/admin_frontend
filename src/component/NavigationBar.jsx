@@ -11,6 +11,7 @@ import Menu from '@material-ui/core/Menu';
 import axios from 'axios';
 
 import {useAuth} from './useAuth';
+import {AccountBoxOutlined} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {

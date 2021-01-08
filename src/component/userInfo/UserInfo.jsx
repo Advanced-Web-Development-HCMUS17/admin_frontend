@@ -19,7 +19,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
-
+import AlternateEmailOutlinedIcon from '@material-ui/icons/AlternateEmailOutlined';
+import StarsOutlinedIcon from '@material-ui/icons/StarsOutlined';
+import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
 const useStyles = makeStyles((theme) => ({
   button: {
     display: 'block',
@@ -88,13 +90,13 @@ export default function UserInfo() {
     fetchUserInfo();
   }, []);
   return (<Container maxWidth={"lg"}>
-    <Grid container direction={"row"} spacing={3}>
+    <Grid container alignItems={"flex-end"} direction={"row"} spacing={3}>
       {userInfo ? (
           <><Grid item>
-            <Typography variant={"h4"}>{userInfo.username}</Typography>
+            <Typography color={"textPrimary"} variant={"h4"}><AccountBoxOutlinedIcon color={"primary"}/> <strong>{userInfo.username}</strong></Typography>
           </Grid>
-            <Grid item><Typography variant={"p"}>Email: {userInfo.email}</Typography></Grid>
-            <Grid item><Typography variant={"p"}>Rating: {userInfo.rating}</Typography></Grid>
+            <Grid item><Typography variant={"p"}><AlternateEmailOutlinedIcon color={"primary"}/>Email: {userInfo.email}</Typography></Grid>
+            <Grid item><Typography variant={"p"}><StarsOutlinedIcon color={"primary"}/>Rating: {userInfo.rating}</Typography></Grid>
             <Grid item><FormControl className={classes.formControl}>
               <InputLabel id="demo-controlled-open-select-label">Role</InputLabel>
               <Select
@@ -111,9 +113,9 @@ export default function UserInfo() {
                 <MenuItem value={ROLE.USER}>User</MenuItem>
               </Select>
             </FormControl>
-              <Button color={"secondary"} onClick={handleChangeRole} variant={"contained"}
-                      disabled={choosingRole === userInfo.role}>Save</Button>
             </Grid>
+            <Grid item><Button color={"secondary"} onClick={handleChangeRole} variant={"contained"}
+                               disabled={choosingRole === userInfo.role}>Save</Button></Grid>
           </>
         )
         : <LinearProgress color="secondary"/>
