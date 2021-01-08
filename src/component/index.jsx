@@ -8,6 +8,8 @@ import GameList from "./games/GamesList";
 import UserList from "./userInfo/UserList";
 import UserInfo from "./userInfo/UserInfo";
 import {LinearProgress} from "@material-ui/core";
+import ResetPasswordPage from "./forgetPassword/ResetPasswordPage";
+import UpdatePasswordPage from "./forgetPassword/UpdatePasswordPage";
 
 const PrivateRoute = ({component: Component, auth: isAuthenticated, ...rest}) => (
   <Route {...rest} render={props => {
@@ -21,11 +23,12 @@ const PrivateRoute = ({component: Component, auth: isAuthenticated, ...rest}) =>
 
 export default function IndexComponent({props}) {
   const {isAuth} = useAuth();
-  console.log(isAuth);
   return (
     <Switch>
       <PrivateRoute exact path="/" auth={isAuth} component={HomePage}/>
       <Route exact path="/login">{isAuth ? <Redirect to="/"/> : <Login/>}</Route>
+      <Route exact path="/reset-password/get-code" component={ResetPasswordPage}/>
+      <Route exact path="/reset-password/:email/:code" component={UpdatePasswordPage}/>
       <PrivateRoute exact path="/game" auth={isAuth} component={GameList}/>
       <PrivateRoute path="/game/:gameId" auth={isAuth} component={GameInfo}/>
       <PrivateRoute exact path="/user" auth={isAuth} component={UserList}/>
