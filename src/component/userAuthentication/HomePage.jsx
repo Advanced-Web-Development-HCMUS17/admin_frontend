@@ -176,7 +176,7 @@ export default function HomePage() {
                 <Route path={"/user/:userId"}>
                   <UserInfo/>
                 </Route>
-                <Route exact path={"/game"}>
+                <Route path={"/game"}>
                   <GameList/>
                 </Route>
                 <Route path={"/game/:gameId"}>

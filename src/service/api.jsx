@@ -77,3 +77,17 @@ export async function fetchGameInfo(token, gameId) {
     return null;
   }
 }
+
+export async function changeUserRole(token, userId, role) {
+  try {
+    await axios.put(`${API_URL}/admin/user/${userId}/role`, {role: role}, {
+      headers:
+        {
+          "Authorization": token
+        }
+    });
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
