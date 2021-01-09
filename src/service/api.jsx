@@ -18,7 +18,7 @@ export async function fetchUserList(token, pageIndex = 1, pageSize = 10) {
 
 export async function searchUser(token, keyword) {
   try {
-    const res = await axios.get(`${API_URL}/admin/user?key=${keyword}`, {
+    const res = await axios.get(`${API_URL}/admin/finduser?key=${keyword}`, {
       headers:
         {"Authorization": token}
     });

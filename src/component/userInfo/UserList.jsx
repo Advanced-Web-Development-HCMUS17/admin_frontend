@@ -12,6 +12,8 @@ import Link from "react-router-dom/Link";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Pagination from "@material-ui/lab/Pagination";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 
 
 function preventDefault(event) {
@@ -51,15 +53,19 @@ export default function UserList() {
   return (
     <React.Fragment>
       <Typography variant={"h5"}>User list</Typography>
-      <TextField id="outlined-basic" label="Search by username or email" value={keyword}
-                 onChange={e => setKeyword(e.target.value)} variant="outlined"/>
-      <Button onClick={handleSearch}>Search</Button>
+      <Box py={2}><Grid container alignItems={"center"}>
+        <Grid item md={9}><TextField id="outlined-basic" label="Search by username or email" value={keyword} fullWidth
+                                     onChange={e => setKeyword(e.target.value)} variant="outlined"/></Grid>
+
+        <Grid item md={3}><Button onClick={handleSearch}>Search</Button></Grid>
+      </Grid></Box>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Username</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Rating</TableCell>
+            <TableCell>Role</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -68,6 +74,7 @@ export default function UserList() {
               <TableCell><Link to={`/user/${user._id}`}>{user.username}</Link></TableCell>
               <TableCell><Link to={`/user/${user._id}`}>{user.email}</Link></TableCell>
               <TableCell>{user.rating}</TableCell>
+              <TableCell>{user.role}</TableCell>
             </TableRow>
           ))}
         </TableBody>
