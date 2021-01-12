@@ -40,13 +40,13 @@ export default function GameList(props) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {games.map((game) => (
+        {games && games.map((game) => (
           <TableRow key={game._id}>
             <TableCell><NavLink to={`/game/${game._id}`}>{game._id}</NavLink></TableCell>
-            <TableCell>{game.user1}</TableCell>
-            <TableCell>{game.user2}</TableCell>
+            <TableCell>{game.user1.username}</TableCell>
+            <TableCell>{game.user2.username}</TableCell>
             <TableCell>{game.date}</TableCell>
-            <TableCell>{game.winner}</TableCell>
+            <TableCell>{game.winner.username}</TableCell>
           </TableRow>
         ))}
       </TableBody>
