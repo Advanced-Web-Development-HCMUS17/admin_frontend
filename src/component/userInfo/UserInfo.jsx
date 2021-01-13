@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
+import {NavLink, useParams} from 'react-router-dom';
 import {Container, Grid} from "@material-ui/core";
 import {changeUserRole, getGamesByUserId, getUserInfo} from "../../service/api";
 import {useAuth} from "../useAuth";
@@ -150,7 +150,7 @@ export default function UserInfo() {
               <TableBody>
                 {games && games.map((game) => (
                   <TableRow key={game._id}>
-                    <TableCell>{game._id}</TableCell>
+                    <TableCell><NavLink to={`/game/${game._id}`}>{game._id}</NavLink></TableCell>
                     <TableCell><Link to={`/user/${game.user1._id}`}>{game.user1.username}</Link></TableCell>
                     <TableCell><Link to={`/user/${game.user2._id}`}>{game.user2.email}</Link></TableCell>
                     <TableCell>{game.date}</TableCell>
