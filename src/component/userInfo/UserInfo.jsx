@@ -95,7 +95,7 @@ export default function UserInfo() {
 
   useEffect(() => {
     fetchUserInfo();
-  }, []);
+  }, [userId]);
   return (<Container maxWidth={"lg"}>
     <Grid container alignItems={"flex-end"} direction={"row"} spacing={3}>
       {userInfo ? (
@@ -148,7 +148,7 @@ export default function UserInfo() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {games.map((game) => (
+                {games && games.map((game) => (
                   <TableRow key={game._id}>
                     <TableCell>{game._id}</TableCell>
                     <TableCell><Link to={`/user/${game.user1._id}`}>{game.user1.username}</Link></TableCell>
