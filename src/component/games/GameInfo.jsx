@@ -10,6 +10,7 @@ import Box from "@material-ui/core/Box";
 import ChatLog from "./chat/ChatLog";
 import {Paper} from "@material-ui/core";
 import Game from "./game/Game";
+import Typography from "@material-ui/core/Typography";
 
 export default function GameInfo() {
   const boardSize = 20;
@@ -54,6 +55,7 @@ export default function GameInfo() {
         </Grid>
       </Grid>
       <Grid>
+        <Typography variant={"h6"}>Chat log</Typography>
         <ChatLog chats={gameInfo.chat ? gameInfo.chat : []}/>
       </Grid>
     </> : <CircularProgress color="secondary"/>
