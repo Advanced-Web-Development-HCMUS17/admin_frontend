@@ -18,6 +18,7 @@ export default function GameList(props) {
 
   async function fetchData() {
     const games = await fetchGames(token, page);
+    console.log(games);
     setGames(games);
   }
 
@@ -43,8 +44,8 @@ export default function GameList(props) {
         {games.map((game) => (
           <TableRow key={game._id}>
             <TableCell><NavLink to={`/game/${game._id}`}>{game._id}</NavLink></TableCell>
-            <TableCell>{game.user1}</TableCell>
-            <TableCell>{game.user2}</TableCell>
+            <TableCell>{game.user1.username}</TableCell>
+            <TableCell>{game.user2.username}</TableCell>
             <TableCell>{game.date}</TableCell>
             <TableCell>{game.winner}</TableCell>
           </TableRow>

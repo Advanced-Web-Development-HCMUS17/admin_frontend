@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import PlayerInfo from "./PlayerInfo";
 import Box from "@material-ui/core/Box";
 import ChatLog from "./chat/ChatLog";
+import Typography from "@material-ui/core/Typography";
 
 export default function GameInfo() {
 
@@ -36,13 +37,17 @@ export default function GameInfo() {
         <Grid item md={3}>
           <Box py={2}>
             Player 1
-            <PlayerInfo name={gameInfo.user1} id={gameInfo.user1._id} email={gameInfo.user1.email} rating={gameInfo.user1.rating}/>
+            <PlayerInfo name={gameInfo.user1} id={gameInfo.user1._id} email={gameInfo.user1.email}
+                        rating={gameInfo.user1.rating}/>
           </Box>
           <Box py={2}>Player 2
-            <PlayerInfo name={gameInfo.user2} id={gameInfo.user1._id} email={gameInfo.user2.email} rating={gameInfo.user2.rating}/></Box>
+            <PlayerInfo name={gameInfo.user2} id={gameInfo.user1._id} email={gameInfo.user2.email}
+                        rating={gameInfo.user2.rating}/></Box>
         </Grid>
       </Grid>
       <Grid>
+        <Typography variant={"h6"}>Chat log</Typography>
+        {JSON.stringify(gameInfo.chat)}
         <ChatLog chats={gameInfo.chat ? gameInfo.chat : []}/>
       </Grid>
     </> : <CircularProgress color="secondary"/>

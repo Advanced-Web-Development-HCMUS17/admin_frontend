@@ -22,6 +22,7 @@ import Alert from "@material-ui/lab/Alert";
 import AlternateEmailOutlinedIcon from '@material-ui/icons/AlternateEmailOutlined';
 import StarsOutlinedIcon from '@material-ui/icons/StarsOutlined';
 import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
+
 const useStyles = makeStyles((theme) => ({
   button: {
     display: 'block',
@@ -68,11 +69,17 @@ export default function UserInfo() {
     setOpenSB(true);
   };
 
-  async function fetchUserInfo() {
-    const [userInfo, games] = await Promise.all([getUserInfo(token, userId), getGamesByUserId(token, userId)]);
-    setUserInfo(userInfo);
-    setChoosingRole(userInfo.role ? userInfo.role : undefined);
-    setGames(games);
+  function fetchUserInfo() {
+
+    getUserInfo(token, userId).then((data) => {
+      setUserInfo(data);
+      setChoosingRole(data.role ? data.role : undefined);
+    })
+
+    getGamesByUserId(token, userId).then((data) => {
+      setGames(data)
+    })
+
   }
 
   const handleChangeRole = async () => {
@@ -93,10 +100,13 @@ export default function UserInfo() {
     <Grid container alignItems={"flex-end"} direction={"row"} spacing={3}>
       {userInfo ? (
           <><Grid item>
-            <Typography color={"textPrimary"} variant={"h4"}><AccountBoxOutlinedIcon color={"primary"}/> <strong>{userInfo.username}</strong></Typography>
+            <Typography color={"textPrimary"} variant={"h4"}><AccountBoxOutlinedIcon color={"primary"}/>
+              <strong>{userInfo.username}</strong></Typography>
           </Grid>
-            <Grid item><Typography variant={"p"}><AlternateEmailOutlinedIcon color={"primary"}/>Email: {userInfo.email}</Typography></Grid>
-            <Grid item><Typography variant={"p"}><StarsOutlinedIcon color={"primary"}/>Rating: {userInfo.rating}</Typography></Grid>
+            <Grid item><Typography variant={"p"}><AlternateEmailOutlinedIcon color={"primary"}/>Email: {userInfo.email}
+            </Typography></Grid>
+            <Grid item><Typography variant={"p"}><StarsOutlinedIcon color={"primary"}/>Rating: {userInfo.rating}
+            </Typography></Grid>
             <Grid item><FormControl className={classes.formControl}>
               <InputLabel id="demo-controlled-open-select-label">Role</InputLabel>
               <Select
@@ -143,6 +153,7 @@ export default function UserInfo() {
                     <TableCell>{game._id}</TableCell>
                     <TableCell><Link to={`/user/${game.user1._id}`}>{game.user1.username}</Link></TableCell>
                     <TableCell><Link to={`/user/${game.user2._id}`}>{game.user2.email}</Link></TableCell>
+                    <TableCell>{game.date}</TableCell>
                     <TableCell>{game.winner}</TableCell>
                   </TableRow>
                 ))}
