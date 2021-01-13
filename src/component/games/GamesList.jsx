@@ -47,7 +47,7 @@ export default function GameList(props) {
             <TableCell>{game.user1.username}</TableCell>
             <TableCell>{game.user2.username}</TableCell>
             <TableCell>{game.date}</TableCell>
-            <TableCell>{game.winner.username}</TableCell>
+            <TableCell>{game.winner}</TableCell>
           </TableRow>
         ))}
       </TableBody>
