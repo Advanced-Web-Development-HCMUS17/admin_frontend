@@ -33,7 +33,7 @@ export default function GameInfo() {
     <Grid item><AccessTimeIcon /> {gameInfo.date}</Grid>
     <Grid container>
       <Grid item md={9} >
-        <Grid md={7} align='center' justify='center' spacing = {2}>
+        <Grid md={5} align='center' justify='center' spacing = {2}>
           <Box fontWeight={700} fontSize='20px'>
 
             Game history

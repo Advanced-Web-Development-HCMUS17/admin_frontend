@@ -101,7 +101,7 @@ function Game(props) {
 
         <Grid item md={12}>
             {component}
-            <Grid md = {7} direction='column' align='center'>
+            <Grid md = {5} direction='column' align='center'>
                 <Button onClick={() => {
                     handleLeft();
                 }}>
